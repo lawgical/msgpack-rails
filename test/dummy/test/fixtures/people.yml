@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  age: 1
+  joined_at: 2011-09-26 16:02:33
+  group_id: 1
+
+two:
+  username: MyString
+  age: 1
+  joined_at: 2011-09-26 16:02:33
+  group_id: 1
