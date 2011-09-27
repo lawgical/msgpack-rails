@@ -4,7 +4,9 @@ Uses the fast and compact [msgpack](https://github.com/msgpack/msgpack 'MessageP
 
 ##  Installation
 
-    gem install msgpack-rails
+In your Gemfile include the following line:
+
+    gem 'msgpack-rails', :git => 'git@github.com:nzifnab/msgpack-rails.git'
 
 ## Usage
 
