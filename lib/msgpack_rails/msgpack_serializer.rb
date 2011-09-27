@@ -7,6 +7,11 @@ module ActiveModel
 
         options[:out] << serializable_hash(options).to_msgpack
       end
+
+      # TODO:  Test and uncomment this method
+      #def from_msgpack(msg)
+      #  MessagePack.unpack(msg)
+      #end
     end
   end
 end

@@ -5,7 +5,7 @@ require "msgpack_rails/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "msgpack_rails"
+  s.name        = "msgpack-rails"
   s.version     = MsgpackRails::VERSION
   s.authors     = ["Nathan Benes"]
   s.email       = ["nbenes@lawgical.com"]
