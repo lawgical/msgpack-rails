@@ -10,6 +10,8 @@ class MsgpackFormatTest < Test::Unit::TestCase
     @felines = [ @mittens, @gloves ]
   end
 
+  # Currently fails for rails 2.3.14.  Officially this gem only works on rails 3.x
+  # Encoding of objects will still work in 2.3.x, but ActiveResource endpoint consumption might not
   def test_msgpack_format_on_single_element
     using_format(Endpoint::Person, :msgpack) do
       ActiveResource::HttpMock.respond_to.get "/people/1.mpac", {'Accept' => ActiveResource::Formats[:msgpack].mime_type}, ActiveResource::Formats[:msgpack].encode(@mittens)
