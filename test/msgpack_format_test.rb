@@ -22,6 +22,26 @@ class MsgpackFormatTest < Test::Unit::TestCase
     end
   end
 
+  def test_msgpack_format_on_collection
+    using_format(Endpoint::Person, :msgpack) do
+      ActiveResource::HttpMock.respond_to.get "/people.mpac", {'Accept' => ActiveResource::Formats[:msgpack].mime_type}, ActiveResource::Formats[:msgpack].encode(@felines)
+      remote_people = Endpoint::Person.find(:all)
+      assert_equal 2, remote_people.size
+      assert remote_people.select {|p| p.username == 'gloves_kitten'}
+    end
+  end
+
+  def test_msgpack_format_on_custom_collection_method
+    using_format(Endpoint::Person, :msgpack) do
+      ActiveResource::HttpMock.respond_to.get "/people/retrieve.mpac?username=gloves_kitten", {'Accept' => ActiveResource::Formats[:msgpack].mime_type}, ActiveResource::Formats[:msgpack].encode([@gloves])
+      remote_people = Endpoint::Person.get(:retrieve, :username => 'gloves_kitten')
+      assert_equal 1, remote_people.size
+      assert_equal @gloves[:id], remote_people[0]['id']
+      assert_equal @gloves[:name], remote_people[0]['name']
+      assert_equal @gloves[:joined_at], remote_people[0]['joined_at']
+    end
+  end
+
   private
     def using_format(klass, mime_type_reference)
       previous_format = klass.format

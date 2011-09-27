@@ -1,6 +1,6 @@
 # MsgpackRails
 
-Uses the fast and compact msgpack binary format to let you serialize objects.
+Uses the fast and compact [msgpack](https://github.com/msgpack/msgpack 'MessagePack') binary format to let you serialize objects.
 
 ##  Installation
 
