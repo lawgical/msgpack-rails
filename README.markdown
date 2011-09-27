@@ -6,7 +6,7 @@ Uses the fast and compact [msgpack](https://github.com/msgpack/msgpack 'MessageP
 
 In your Gemfile include the following line:
 
-    gem 'msgpack-rails', :git => 'git@github.com:nzifnab/msgpack-rails.git'
+    gem 'msgpack-rails', :git => 'git://github.com/nzifnab/msgpack-rails.git'
 
 ## Usage
 
