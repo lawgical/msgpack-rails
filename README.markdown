@@ -31,28 +31,29 @@ Additionally you can set up ActiveResource to accept :mpac content types:
 
 ## Gotchas
 
-1) Serialization options hash
+1. Serialization options hash
 
-It is currently more limiting than `to_json` or `to_xml` in that the 'options' hash does not (yet) work.  If you want the equivalent of this from json:
+    It is currently more limiting than `to_json` or `to_xml` in that the 'options' hash does not (yet) work.  If you want the equivalent of this from json:
 
-    @person.to_json(:include => [:group], :methods => [:monkey_see])
+        @person.to_json(:include => [:group], :methods => [:monkey_see])
 
-Then you have to generate it as a hash manually:
+    Then you have to generate it as a hash manually:
 
-    @person.serializable_hash(:include => [:group], :methods => [:monkey_see]).to_msgpack
+        @person.serializable_hash(:include => [:group], :methods => [:monkey_see]).to_msgpack
 
-I plan on finding a way to get this working as the other two format methods do, but for now this work-around should be fine.
+    I plan on finding a way to get this working as the other two format methods do, but for now this work-around should be fine.
 
-2) Date formats
+2. Date formats
 
-The msgpack gem (written in C) does not natively serialize date formats.  Instead, I convert the dates to a string and send them that way.
+    The msgpack gem (written in C) does not natively serialize date formats.  Instead, I convert the dates to a string and send them that way.
 This is bad, because they are seen by the ActiveResource endpoint as a string and are not converted to a date.  You need to keep this in mind and may have to
 use `to_datetime` on dates in those models.
 
 ## TODO
 
 1) Fix the two gotchas mentioned above
-2) Better support and testing for rails 2.3 (maybe, but low priority)
+2) Better render support in the controller (something like `render :mpac => @person.to_msgpack` without the `:content_type` requirement)
+3) Better support and testing for rails 2.3 (maybe, but low priority)
 
 ## Contributing
 
