@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = MsgpackRails::VERSION
   s.authors     = ["Nathan Benes"]
   s.email       = ["nbenes@lawgical.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of MsgpackRails."
-  s.description = "TODO: Description of MsgpackRails."
+  s.homepage    = "https://github.com/nzifnab/msgpack-rails"
+  s.summary     = "Rails gem to utilize msgpack for serializing and deserializing"
+  s.description = "For more information see the README."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
