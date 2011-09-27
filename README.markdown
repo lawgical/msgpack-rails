@@ -52,7 +52,9 @@ use `to_datetime` on dates in those models.
 ## TODO
 
 1) Fix the two gotchas mentioned above
+
 2) Better render support in the controller (something like `render :mpac => @person.to_msgpack` without the `:content_type` requirement)
+
 3) Better support and testing for rails 2.3 (maybe, but low priority)
 
 ## Contributing
