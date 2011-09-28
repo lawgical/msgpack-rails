@@ -3,7 +3,7 @@ PATH
   specs:
     msgpack-rails (0.0.1)
       msgpack
-      rails (>= 2.3.5)
+      rails (~> 3.0.0)
 
 GEM
   remote: http://rubygems.org/

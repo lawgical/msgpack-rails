@@ -1,6 +1,7 @@
 require 'test_helper'
 
 # Generally-modeled after the ActiveResource formats tests
+# NOTE:  ActiveResource endpoint consumption currently not supported for rails 2.3.x
 class MsgpackFormatTest < Test::Unit::TestCase
   def setup
     # PS.  I hate cats.
@@ -51,4 +52,4 @@ class MsgpackFormatTest < Test::Unit::TestCase
     ensure
       klass.format = previous_format
     end
-end
+end if Rails::VERSION::MAJOR > 2
