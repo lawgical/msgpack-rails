@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    msgpack_rails (0.0.1)
+    msgpack-rails (0.0.1)
       msgpack
-      rails (~> 3.0.0)
+      rails (>= 2.3.5)
 
 GEM
   remote: http://rubygems.org/
@@ -80,5 +80,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  msgpack_rails!
+  msgpack-rails!
   sqlite3
