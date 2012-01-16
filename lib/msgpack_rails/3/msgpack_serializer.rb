@@ -21,3 +21,9 @@ module ActiveRecord
     include ActiveModel::Serializers::Msgpack
   end
 end
+
+module ActiveResource
+  class Base
+    include ActiveModel::Serializers::Msgpack
+  end
+end

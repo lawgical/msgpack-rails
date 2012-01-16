@@ -15,6 +15,14 @@ class MsgpackSerializerTest < Test::Unit::TestCase
     assert_match %r{joined_at.#{Regexp.escape(@person.joined_at.utc.to_s)}}, pck
   end
 
+  def test_encode_activeresource_attributes
+    person = Endpoint::Person.new(:username => "Oreo the Bunny", :age => 6, :joined_at => "February 10, 2012 9:04:00 PM".to_datetime.utc)
+    pck = person.to_msgpack
+    assert_match %r{username.Oreo the Bunny}, pck
+    assert_match %r{age#{MessagePack.pack(6)}}, pck
+    assert_match %r{joined_at.#{Regexp.escape(person.joined_at.utc.to_s)}}, pck
+  end
+
   def test_encode_multiple_objects_in_array
     @person2 = Person.new(:username => "Gloves the Kitten", :age => 34, :joined_at => "February 3, 2010 6:44:00 AM".to_datetime.utc)
     pck = [@person, @person2].to_msgpack
