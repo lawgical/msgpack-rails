@@ -24,7 +24,7 @@ In your controller's render action (to be consumed as an API like ActiveResource
 Additionally you can set up ActiveResource to accept :mpac content types:
 
     class Animal < ActiveResource::Base
-      self.format = :mpac
+      self.format = :msgpack
     end
 
     # Meanwhile, across the desert...

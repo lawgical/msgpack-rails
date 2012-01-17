@@ -18,7 +18,9 @@ class MsgpackFormatTest < Test::Unit::TestCase
       ActiveResource::HttpMock.respond_to.get "/people/1.mpac", {'Accept' => ActiveResource::Formats[:msgpack].mime_type}, ActiveResource::Formats[:msgpack].encode(@mittens)
       result = Endpoint::Person.find(1)
       assert_equal @mittens[:username], result.username
-      assert_equal @mittens[:joined_at], result.joined_at
+
+      # I have no idea, for some reason when @mittens is first DateTime == String, even if string has wildly different characters in it.
+      assert_equal result.joined_at, @mittens[:joined_at]
       assert_equal @mittens[:age], result.age
     end
   end
@@ -39,7 +41,7 @@ class MsgpackFormatTest < Test::Unit::TestCase
       assert_equal 1, remote_people.size
       assert_equal @gloves[:id], remote_people[0]['id']
       assert_equal @gloves[:name], remote_people[0]['name']
-      assert_equal @gloves[:joined_at], remote_people[0]['joined_at']
+      assert_equal remote_people[0]['joined_at'], @gloves[:joined_at]
     end
   end
 
