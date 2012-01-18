@@ -33,7 +33,7 @@ module ActiveResource
       end
 
       def decode_value(value)
-        if value.is_a?(String) && value[-1].chr == "]" && (m = value.match(/^([^\[\]]+)\[([^\[\]]+)\]$/))
+        if value.is_a?(String) && value[-1] == "]" && (m = value.match(/^([^\[\]]+)\[([^\[\]]+)\]$/))
           type = m[1]
           content = m[2]
           content.send("to_#{type.downcase}")
