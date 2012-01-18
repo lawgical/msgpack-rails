@@ -20,11 +20,7 @@ module ActiveResource
       def decode(mpac)
         vals = MessagePack.unpack(mpac)
 
-        if vals.is_a?(Array)
-          vals.map{|v| decode_hash(v)}
-        else
-          decode_hash(vals)
-        end
+        decode_value(vals)
       end
 
       def decode_hash(vals)
@@ -37,10 +33,14 @@ module ActiveResource
       end
 
       def decode_value(value)
-        if value.is_a?(String) && value[-1] == "]" && (m = value.match(/^([^\[\]]+)\[([^\[\]]+)\]$/))
+        if value.is_a?(String) && value[-1].chr == "]" && (m = value.match(/^([^\[\]]+)\[([^\[\]]+)\]$/))
           type = m[1]
           content = m[2]
           content.send("to_#{type.downcase}")
+        elsif value.is_a?(Hash)
+          decode_hash(value)
+        elsif value.is_a?(Array)
+          value.map{|v| decode_value(v)}
         else
           value
         end
