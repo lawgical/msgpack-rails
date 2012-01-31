@@ -7,6 +7,7 @@ module ActiveModel
 
         options[:out] << serializable_hash(options).to_msgpack
       end
+      alias_method :to_mpac, :to_msgpack
 
       # TODO:  Test and uncomment this method
       #def from_msgpack(msg)
