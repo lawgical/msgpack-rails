@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    msgpack-rails (0.0.5)
+    msgpack-rails (0.0.6)
       msgpack
       rails (>= 2.3.5)
 
