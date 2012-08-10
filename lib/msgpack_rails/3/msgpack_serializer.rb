@@ -1,6 +1,9 @@
 module ActiveModel
   module Serializers
     module Msgpack
+      extend ActiveSupport::Concern
+      include ActiveModel::Serialization
+
       def to_msgpack(options = {})
         options = {:out => options} if options.is_a?(String)
         options[:out] ||= ''
@@ -18,7 +21,7 @@ module ActiveModel
 end
 
 module ActiveRecord
-  module Serialization
+  class Base
     include ActiveModel::Serializers::Msgpack
   end
 end

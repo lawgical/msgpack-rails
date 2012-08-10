@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 2.3.5"
   s.add_dependency "msgpack"
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "sqlite3", "~> 1.3.5"
 end
