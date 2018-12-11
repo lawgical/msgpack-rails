@@ -8,7 +8,7 @@ module ActiveResource
       end
 
       def mime_type
-        Mime::MPAC.to_s
+        Mime[:mpac].to_s
       end
 
       # Options hash currently serves no function.
