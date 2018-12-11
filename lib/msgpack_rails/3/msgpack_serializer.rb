@@ -20,14 +20,18 @@ module ActiveModel
   end
 end
 
-module ActiveRecord
-  class Base
-    include ActiveModel::Serializers::Msgpack
+if defined?(ActiveRecord)
+  module ActiveRecord
+    class Base
+      include ActiveModel::Serializers::Msgpack
+    end
   end
 end
 
-module ActiveResource
-  class Base
-    include ActiveModel::Serializers::Msgpack
+if defined?(ActiveResource)
+  module ActiveResource
+    class Base
+      include ActiveModel::Serializers::Msgpack
+    end
   end
 end
